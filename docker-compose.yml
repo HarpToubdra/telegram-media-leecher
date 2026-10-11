@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  telegram-leecher:
+    build: .
+    container_name: telegram-media-leecher
+    restart: unless-stopped
+    env_file:
+      - .env
+    # Needed for initial Telegram authentication (entering phone & SMS code in terminal)
+    stdin_open: true
+    tty: true
+    volumes:
+      # Persistent Telegram session file
+      - ./data:/app/data
+      # Mount your host media libraries
+      - /mnt/storage/films:/media/films
+      - /mnt/storage/series:/media/series
+      - /mnt/storage/animes:/media/animes
+    environment:
+      - PYTHONUNBUFFERED=1

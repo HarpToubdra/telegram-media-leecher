@@ -1,0 +1,17 @@
+[Unit]
+Description=Telegram Media Leecher Daemon (Jellyfin / Plex)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/telegram-media-leecher
+ExecStart=/usr/bin/python3 /opt/telegram-media-leecher/main.py
+Restart=always
+RestartSec=10
+EnvironmentFile=/opt/telegram-media-leecher/.env
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
