@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telegram-media-leecher"
+version = "1.0.0"
+description = "Automated media downloader from Telegram channels & chats directly to Jellyfin, Plex, or Emby"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "telethon>=1.36.0",
+    "cryptg>=0.4.0",
+    "guessit>=3.8.0",
+    "python-dotenv>=1.0.1",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,20 @@
+.git
+.gitignore
+.venv
+venv
+ENV
+env
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache
+tests
+
+# Private credentials and data
+*.session
+*.session-journal
+.env
+data/
+.secrets/
+*.log

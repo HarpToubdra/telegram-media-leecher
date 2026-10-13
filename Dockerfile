@@ -24,7 +24,7 @@ COPY src/ ./src/
 COPY main.py .
 
 # Create volume directories
-RUN mkdir -p /app/data /media/films /media/series /media/animes
+RUN mkdir -p /app/data /media/films /media/series /media/animes /media/adulte
 
 # Run command
 CMD ["python", "main.py"]

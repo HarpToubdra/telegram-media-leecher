@@ -15,6 +15,7 @@ class Config:
     download_dir_films: str
     download_dir_series: str
     download_dir_animes: str
+    download_dir_adulte: str
     jellyfin_enabled: bool
     jellyfin_url: str
     jellyfin_api_key: str
@@ -40,6 +41,7 @@ def load_config() -> Config:
     download_dir_films = os.getenv("DOWNLOAD_DIR_FILMS", "/media/films")
     download_dir_series = os.getenv("DOWNLOAD_DIR_SERIES", "/media/series")
     download_dir_animes = os.getenv("DOWNLOAD_DIR_ANIMES", "/media/animes")
+    download_dir_adulte = os.getenv("DOWNLOAD_DIR_ADULTE", "/media/adulte")
 
     jellyfin_enabled = os.getenv("JELLYFIN_ENABLED", "false").strip().lower() in ("true", "1", "yes")
     jellyfin_url = os.getenv("JELLYFIN_URL", "http://localhost:8096").rstrip("/")
@@ -49,6 +51,7 @@ def load_config() -> Config:
     os.makedirs(download_dir_films, exist_ok=True)
     os.makedirs(download_dir_series, exist_ok=True)
     os.makedirs(download_dir_animes, exist_ok=True)
+    os.makedirs(download_dir_adulte, exist_ok=True)
     
     # Ensure directory for session exists
     session_dir = os.path.dirname(session_path)
@@ -63,6 +66,7 @@ def load_config() -> Config:
         download_dir_films=download_dir_films,
         download_dir_series=download_dir_series,
         download_dir_animes=download_dir_animes,
+        download_dir_adulte=download_dir_adulte,
         jellyfin_enabled=jellyfin_enabled,
         jellyfin_url=jellyfin_url,
         jellyfin_api_key=jellyfin_api_key,

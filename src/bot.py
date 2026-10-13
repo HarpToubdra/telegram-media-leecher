@@ -96,6 +96,12 @@ def setup_bot(config: Config) -> TelegramClient:
             saved_name = os.path.basename(downloaded_path)
             logger.info("File successfully downloaded to %s", downloaded_path)
 
+            # Ensure media server (Jellyfin/Plex) running as another user can read the file
+            try:
+                os.chmod(downloaded_path, 0o666)
+            except Exception as pe:
+                logger.debug("Could not set file permissions on %s: %s", downloaded_path, pe)
+
             jellyfin_text = ""
             if config.jellyfin_enabled:
                 refreshed = trigger_jellyfin_refresh(config)

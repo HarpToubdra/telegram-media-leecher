@@ -15,6 +15,7 @@ def trigger_jellyfin_refresh(config: Config) -> bool:
 
     url = f"{config.jellyfin_url}/Library/Refresh"
     headers = {
+        "Authorization": f'MediaBrowser Token="{config.jellyfin_api_key}"',
         "X-Emby-Token": config.jellyfin_api_key,
         "Accept": "application/json"
     }
